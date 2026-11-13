@@ -15,7 +15,7 @@ The look of the Computer Science Society (CSS): a retro computer desktop. Pixel 
 | A weekly or event deck | `weeklies/04-welcome-jc/index.html` | playful |
 | A deck for people outside the society (speakers, partners, the university) | `external/01-wyhow-panel/index.html` | formal |
 | The hub homepage | `index.html` + `hub.css` | playful |
-| A phone tool used at a meetup or fair (QR / contact screen) | `meetup-connect.html` in this folder, plus the section "Single-screen phone tools" below | formal for the visitor side |
+| A phone tool used at a meetup or fair (QR / contact screen) | `index.html` in this folder, plus the section "Single-screen phone tools" below | formal for the visitor side |
 | Anything new | `references/components.md` for the class catalogue | either |
 
 Fonts and the logo live in `assets/` at the repo root (`assets/fonts/*.ttf`, `assets/css-logo.png`). Never load fonts from a CDN.
@@ -72,7 +72,7 @@ Rules for content:
 
 ## Single-screen phone tools
 
-Used by `meetup-connect.html`: a phone lying flat between two people. Same tokens and fonts as above (fonts load from `assets/fonts/`, never a CDN); only the scale changes.
+Used by `index.html`: a phone lying flat between two people. Same tokens and fonts as above (fonts load from `assets/fonts/`, never a CDN); only the scale changes.
 
 - **Colour use**: paper grid page (`rgba(112,112,162,.08)` lines, 36px), `--card` windows, `--purple` title bars with `--on-purple` text and `--light-dot` squares, 3px `--ink` borders, `6px 6px 0 var(--shadow)`. Selected button: `--mint`. "What am I looking at" label: `--sun`. Small labels and dividers: `--purple` and `--lavender` (dotted or dashed). QR modules in `--ink` on white. No blue, no coral, no new accent colours.
 - **Visitor side** (top, rotated 180°, formal register): about two thirds of the screen. Greeting `Hi, I'm <em>Name</em>` in Pixelify (the name in purple), role, university, a sun label for the link, then the largest QR that fits. Nothing to tap. Window title is a plain word (`hello`).
