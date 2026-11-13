@@ -154,8 +154,8 @@ button{cursor:pointer;-webkit-tap-highlight-color:transparent}
     proposal:"https://docs.google.com/document/d/1SQ6D37B-QNRCCLaggwECAH-ixhP-mgJ5/edit"
   };
   var PEOPLE = {
-    jack:{name:"Jack", role:"President of the Computer Science Society (CSS)", roleGuest:"I'm Jack, president of the Computer Science Society (CSS)"},
-    ben:{name:"Ben", role:"Computer Science Society (CSS)", roleGuest:"I'm Ben, from the Computer Science Society (CSS)"}
+    jack:{name:"Jack", role:"President of CSS", roleGuest:"I'm Jack, president of CSS"},
+    ben:{name:"Ben", role:"Computer Science Society", roleGuest:"I'm Ben, from CSS"}
   };
 
   /* Names of people I greeted. Kept in this browser only (localStorage), no server. */
@@ -184,7 +184,7 @@ button{cursor:pointer;-webkit-tap-highlight-color:transparent}
 
   function targetLabel(){
     var p = PEOPLE[state.person];
-    if (state.link === "hack") return "NottsHack '27 · 25–27 Feb 2027";
+    if (state.link === "hack") return "NottsHack '27 · 25–27 Feb";
     if (state.link === "insta") return "CSS on Instagram";
     if (state.link === "proposal") return "Our proposal";
     return p.name + " on LinkedIn";
@@ -211,7 +211,7 @@ button{cursor:pointer;-webkit-tap-highlight-color:transparent}
         '</div>' +
         '<p class="target">' + esc(targetLabel()) + '</p>' +
         '<div class="qr-wrap">' + qr + '</div>' +
-        (url ? '<p class="qr-url"><b>SCAN WITH CAMERA</b>' + esc(short(url)) + '</p>' : '') +
+        (url ? '<p class="qr-url"><b>SCAN ME</b>' + esc(short(url)) + '</p>' : '') +
       '</div>';
   }
 
@@ -227,7 +227,7 @@ button{cursor:pointer;-webkit-tap-highlight-color:transparent}
           rows.map(function(r){ return '<button type="button" data-link="' + r[0] + '" aria-pressed="' + (state.link === r[0]) + '">' + esc(r[1]) + '</button>'; }).join("") +
         '</div>' +
         '<form class="name-row" id="nameform" autocomplete="off">' +
-          '<input id="guest" name="guest" type="text" maxlength="30" enterkeyhint="done" placeholder="Their name, or empty for I\'m ' + esc(PEOPLE[state.person].name) + '" aria-label="Their name" value="' + esc(state.draft) + '">' +
+          '<input id="guest" name="guest" type="text" maxlength="30" enterkeyhint="done" placeholder="Their name (optional)" aria-label="Their name" value="' + esc(state.draft) + '">' +
           '<button type="submit">Greet</button>' +
         '</form>' +
       '</div>';
