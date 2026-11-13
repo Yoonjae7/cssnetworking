@@ -68,7 +68,8 @@ button{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .near .body{gap:6px;padding:8px}
 .pick{flex:none;display:grid;gap:6px}
 .pick.who{grid-template-columns:1fr 1fr}
-.pick.what{grid-template-columns:repeat(3,1fr)}
+.pick.what{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pick.what button{padding:0 2px;font-size:12px}
 .pick button{min-height:38px;padding:0 6px;border:2px solid var(--ink);background:var(--card);font:600 14px var(--font-body);line-height:1.1;box-shadow:3px 3px 0 var(--shadow)}
 .pick.who button{font:400 18px var(--font-display);letter-spacing:.3px}
 .pick button[aria-pressed="true"]{background:var(--mint)}
@@ -127,6 +128,7 @@ button{cursor:pointer;-webkit-tap-highlight-color:transparent}
     <label for="f-insta">CSS Instagram<input id="f-insta" name="insta" type="url" inputmode="url" placeholder="https://www.instagram.com/…"></label>
     <label for="f-jack">Jack's LinkedIn<input id="f-jack" name="jack" type="url" inputmode="url" placeholder="https://www.linkedin.com/in/…"></label>
     <label for="f-ben">Ben's LinkedIn<input id="f-ben" name="ben" type="url" inputmode="url" placeholder="https://www.linkedin.com/in/…"></label>
+    <label for="f-proposal">Proposal (Google Doc)<input id="f-proposal" name="proposal" type="url" inputmode="url" placeholder="https://docs.google.com/…"></label>
     <div class="sheet-actions"><button type="button" id="cancel">Cancel</button><button type="submit" class="save">Save</button></div>
   </form>
 </div>
@@ -143,12 +145,13 @@ button{cursor:pointer;-webkit-tap-highlight-color:transparent}
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
 <script>
 (function(){
-  var KEYS = ["hack","insta","jack","ben"];
+  var KEYS = ["hack","insta","jack","ben","proposal"];
   var DEFAULTS = {
     hack:"https://nottshack27.unmcss.dev/",
     insta:"https://www.instagram.com/unm.css/",
     jack:"https://www.linkedin.com/in/yoonjae7",
-    ben:"https://www.linkedin.com/in/min-pyae-phyo/"
+    ben:"https://www.linkedin.com/in/min-pyae-phyo/",
+    proposal:"https://docs.google.com/document/d/1SQ6D37B-QNRCCLaggwECAH-ixhP-mgJ5/edit"
   };
   var PEOPLE = {
     jack:{name:"Jack", role:"President of the Computer Science Society (CSS)", roleGuest:"I'm Jack, president of the Computer Science Society (CSS)"},
@@ -183,6 +186,7 @@ button{cursor:pointer;-webkit-tap-highlight-color:transparent}
     var p = PEOPLE[state.person];
     if (state.link === "hack") return "NottsHack '27 · 25–27 Feb 2027";
     if (state.link === "insta") return "CSS on Instagram";
+    if (state.link === "proposal") return "Our proposal";
     return p.name + " on LinkedIn";
   }
 
@@ -213,7 +217,7 @@ button{cursor:pointer;-webkit-tap-highlight-color:transparent}
 
   /* What I tap: small */
   function nearPanel(){
-    var rows = [["hack", "NottsHack"], ["insta", "Instagram"], ["person", "LinkedIn"]];
+    var rows = [["hack", "Hack '27"], ["insta", "Instagram"], ["person", "LinkedIn"], ["proposal", "Proposal"]];
     return '<div class="bar"><span>show.exe</span><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span></div>' +
       '<div class="body">' +
         '<div class="pick who" role="group" aria-label="Who is showing">' +
